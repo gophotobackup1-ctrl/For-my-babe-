@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Emma 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#ffe4ec,#fdf6ff,#eaf7ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+}
+
+.card{
+  width:90%;
+  max-width:480px;
+  background:rgba(255,255,255,0.9);
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  color:#d14a7c;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:0.95rem;
+  color:#444;
+  line-height:1.8;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:#d14a7c;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.05);
+}
+
+/* floating petals */
+.petal{
+  position:fixed;
+  top:-20px;
+  font-size:18px;
+  animation:fall 7s linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
+
+/* final */
+.signature{
+  margin-top:15px;
+  font-family:'Playfair Display',serif;
+  color:#d14a7c;
+  font-size:1.3rem;
+}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1 id="title">Emma 🌸</h1>
+
+  <p id="text">
+    I didn’t make this to say something big.<br><br>
+    Just something honest.<br><br>
+    Something quiet…<br>
+    like the way you make everything feel.
+  </p>
+
+  <button onclick="next()">Continue</button>
+
+  <div id="end" class="hidden signature">— pwkie</div>
+
+</div>
+
+<script>
+let step = 0;
+
+function next(){
+  step++;
+
+  if(step === 1){
+    title.innerHTML = "You 🌷";
+    text.innerHTML = `
+      There’s something about you<br>
+      that makes things feel softer.<br><br>
+      Not louder.<br>
+      Not dramatic.<br><br>
+      Just… better.
+    `;
+  }
+
+  else if(step === 2){
+    title.innerHTML = "In a simple way ✨";
+    text.innerHTML = `
+      It’s not just the big moments.<br><br>
+      It’s the small ones.<br>
+      The normal ones.<br><br>
+      Somehow, with you…<br>
+      even those feel different.
+    `;
+  }
+
+  else if(step === 3){
+    title.innerHTML = "And I noticed 💗";
+    text.innerHTML = `
+      I don’t always say it out loud,<br>
+      but I notice you.<br><br>
+      The way you are.<br>
+      The way you care.<br><br>
+      It stays with me.
+    `;
+  }
+
+  else if(step === 4){
+    title.innerHTML = "Just this 🌸";
+    text.innerHTML = `
+      I’m really glad it’s you.<br><br>
+      Not for any big reason.<br><br>
+      Just because…<br>
+      it feels right.
+    `;
+  }
+
+  else if(step === 5){
+    title.innerHTML = "Emma 💖";
+    text.innerHTML = `
+      You make things feel calm,<br>
+      warm,<br>
+      and a little more meaningful.<br><br>
+      And I wouldn’t change that for anything.
+    `;
+    document.getElementById("end").classList.remove("hidden");
+  }
+}
+
+/* petals */
+setInterval(()=>{
+  const p=document.createElement('div');
+  p.className='petal';
+  p.innerHTML='🌸';
+  p.style.left=Math.random()*100+'vw';
+  p.style.animationDuration=5+Math.random()*3+'s';
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),8000);
+},700);
+</script>
+
+</body>
+</html>
